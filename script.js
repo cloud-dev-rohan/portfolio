@@ -1,6 +1,7 @@
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".site-nav");
 const tiltCard = document.querySelector(".tilt-card");
+const revealItems = document.querySelectorAll(".reveal");
 
 if (toggle && nav) {
   toggle.addEventListener("click", () => {
@@ -31,3 +32,17 @@ if (tiltCard) {
     tiltCard.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0)";
   });
 }
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.16 },
+);
+
+revealItems.forEach((item) => revealObserver.observe(item));

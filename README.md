@@ -1,6 +1,6 @@
 # Portfolio Site
 
-This project is a static portfolio website that can be published with GitHub Pages.
+This project is a polished static portfolio website built to showcase professional experience, technical skills, and project highlights for recruiters and hiring teams.
 
 ## Publish to GitHub Pages
 

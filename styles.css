@@ -108,17 +108,10 @@ a {
   font-size: 1.05rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-
-.brand span {
-  display: inline-grid;
-  place-items: center;
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 50%;
-  margin-right: 0.35rem;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #030712;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .site-nav {
@@ -280,11 +273,49 @@ h1 {
   position: relative;
   padding: 2rem;
   transform-style: preserve-3d;
-  transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
   overflow: hidden;
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.hero-card:hover {
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  border-color: rgba(110, 231, 249, 0.28);
+}
+
+.hero-visual {
+  margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-photo {
+  width: 158px;
+  height: 158px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.hero-card-content {
+  text-align: center;
+}
+
+.hero-card-content h2 {
+  margin-bottom: 0.8rem;
+}
+
+.hero-card-content p {
+  margin: 0 auto 1rem;
+  max-width: 360px;
 }
 
 .animated-profile-card::before {
@@ -377,10 +408,12 @@ h1 {
 
 .section-heading {
   margin-bottom: 1.6rem;
+  text-align: center;
 }
 
 .section-heading h2 {
   max-width: 700px;
+  margin: 0 auto;
 }
 
 .about-grid {
@@ -405,8 +438,9 @@ h1 {
 
 .info-card:hover,
 .project-card:hover {
-  transform: translateY(-4px) scale(1.01);
+  transform: translateY(-6px) scale(1.01);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  border-color: rgba(110, 231, 249, 0.35);
 }
 
 .skill-card {
@@ -445,6 +479,24 @@ h1 {
 .skill-card:hover {
   transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateY(-6px);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.project-card-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.8rem;
+}
+
+.project-badge {
+  display: inline-block;
+  padding: 0.33rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(110, 231, 249, 0.14);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .tag-list {
@@ -553,10 +605,35 @@ h1 {
   font-weight: 600;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .site-footer {
   text-align: center;
   padding: 2.2rem 1rem 3rem;
   color: var(--muted);
+}
+
+@keyframes profilePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(110, 231, 249, 0.12);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 2px rgba(110, 231, 249, 0.2);
+    transform: scale(1.01);
+  }
 }
 
 @keyframes float {
